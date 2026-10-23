@@ -73,7 +73,7 @@ local UI = require(script.Parent.OpiumUI)
 If `OpiumUI.luau` lives in the executor workspace:
 
 ```lua
-local UI = loadstring(readfile("OpiumUI.luau"))()
+local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/alesisce/opium/refs/heads/main/OpiumUI.luau"))()
 ```
 
 The demo (`OpiumUI_Demo.luau`) uses this pattern.
