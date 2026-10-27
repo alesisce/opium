@@ -73,12 +73,24 @@ local UI = require(script.Parent.OpiumUI)
 If `OpiumUI.luau` lives in the executor workspace:
 
 ```lua
-local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/alesisce/opium/refs/heads/main/OpiumUI.luau"))()
+local UI = loadstring(readfile("OpiumUI.luau"))()
 ```
 
 The demo (`OpiumUI_Demo.luau`) uses this pattern.
 
-> **Requirements:** the library is client-side. It uses `Players.LocalPlayer`, `UserInputService`, `TweenService` and `HttpService`. Config save/load additionally requires `writefile` / `readfile` (executor or Studio with file access).
+### Executor / remote (GitHub raw)
+
+You can also load the latest version directly from the repository:
+
+```lua
+local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/alesisce/opium/refs/heads/main/OpiumUI.luau"))()
+```
+
+- Requires an executor with `game:HttpGet` and `loadstring`.
+- This tracks the `main` branch. Pin a commit URL if you need reproducible builds.
+- Review remote code before running it: it executes with full client permissions.
+
+> **Requirements:** the library is client-side. It uses `Players.LocalPlayer`, `UserInputService`, `TweenService` and `HttpService`. Config save/load additionally requires `writefile` / `readfile` (executor or Studio with file access). Remote loading requires `game:HttpGet` and `loadstring`.
 
 ---
 
